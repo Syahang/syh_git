@@ -1,0 +1,125 @@
+1、path模块==》对文件路径的操作
+    path.resolve()=》将最后一个参数转化为绝对路径
+    path.normalize()=》路径的格式化
+    path.extname()=》获取文件的后缀名
+    path.format()=》将对象转化为路径
+    path.isAbsolute()=》返回绝对路径
+    path.join()=》将多段路径进行拼接
+    path.relative()=》返回相对路径
+    path.dirname()=》返回文件目录
+    path.parse()=》解析文件路径
+2、模块抛出
+    node的核心就是模块化，它是common.js和require.js的结合
+    模块化：common.js/AMD/ES6
+        ES6=>
+            引入方式：import
+            模块抛出：export/export default
+
+        CommonJS=>common.js
+            引入方式：require
+            模块抛出：exports/module.exports 
+                module.exports 和 exports 的区别：
+                1、exports是module.exports的引用
+                2、module.exports默认指向空对象，因为会覆盖exports的值
+                    当它两都为null时，判断==为true
+            它实现了服务器端的模块化，引入模块执行时是同步的，所以对浏览器兼容有困难
+            于是出现了AMD和CMD，AMD和CMD都是异步执行，实现了浏览器的模块化
+
+        AMD=>require.js
+            引入方式：require
+            模块抛出：export/module.exports 
+            定义模块：define('文件名','依赖文件',callback)
+            引入模块：require('依赖文件',callback)
+        CMD=>sea.js
+            引入方式：require
+            模块抛出：export/module.exports 
+            定义模块：define('文件名',()=>{
+                var 变量=require('依赖文件')
+            })
+            引入模块：require('依赖文件',callback)
+    AMD和CMD的区别：
+        相同点：都是异步执行，实现了对浏览器的模块化
+        不同点：其实就是依赖文件执行时间不一样
+            1、AMD是依赖前置，依赖文件提前加载
+            2、CMD是就近前置，需要哪个哪个依赖文件执行，虽然不会造成资源浪费，性能更高，
+            但是用户体验没有AMD好；
+    import和require的区别：
+        相同点：都是模块化的引入方式
+        不同点：1、import只能出现在文件开头，require可以出现在任何地方
+            2、import是ES6中的引入方式，require是AMD和CommonJS的引入方式
+            3、import是静态编译，require是动态编译
+            4、import是关键字，require不是
+            5、import是异步的，require是同步的
+            6、require是值拷贝，导出值不会影响导入值，import指向内存地址，导入值会随导出值变化
+3、queryString():查询字符串
+    将对象转换为字符串
+    queryString.stringfy({})
+    将字符串转换为对象
+    queryString.parse()
+4、npm：(包管理工具)
+    npm init -y:初始化 ==》package.json
+    npm install == npm i:安装 ==》node_modules(依赖文件)
+    npm uninstall:卸载
+    npm -S=npm --save:下载到生产环境
+    npm -D==npm --save -D：下载到开发环境
+    dependencies==>生产环境的项目依赖
+    devdependencies==>开发环境的项目依赖
+
+
+5、上传图片视频(formidable):
+    var form=new fd.IncomingForm();
+    将图片传入本地文件 form.uploadDir="./upload"
+    form.parse(req,function(err,fields,files){
+        //提取旧的路径：
+        var oldpath=files.pic.path;
+        //提取后缀名：
+        var extname=path.extname(files.pic.name)
+        //拼接新路径：
+        (以时间为名字，不会重复) var newpath="upload/"+tt+extname
+        //改文件名字：
+        fs.rename(oldpath,newpath,(err)=>{})
+    })
+6、模板渲染
+    //用对象模拟数据库：
+    var obj={
+        "list":[
+            {
+                name:"tom",age:12
+            },{
+                name:"syh",age:18
+            }
+        ] 
+    }
+    //读取ejs模板
+     fs.readFile("./index.ejs",(err,data)=>{
+        // ejs模板转字符串
+        var template=data.toString()
+        // 把数据渲染过来，内容为obj
+        var result=ejs.render(template,obj)
+        // 在页面显示
+        res.end(result)
+    })
+
+    ejs 模板引擎 基于node
+        作用：高效的去渲染数据
+        <%%>脚本控制
+        <%#%>注释
+        <%=%>输出
+        <% _%>去除尾部空格
+        <%_ %>去除首部空格
+        <%-%>输出原文
+
+        渲染=》
+            ejs.render（“模板”，“数据”）数据必须是对象
+        编译=》
+            ejs.compile(字符串, options) opations：选填
+
+
+预习：atr-tempalte:
+    crypto  node里面的加密
+    express
+
+
+
+
+

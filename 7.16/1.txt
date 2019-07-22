@@ -1,0 +1,74 @@
+1、node =》express koa
+2、mongodb =》基于分布式文件存储的开源数据库系统    mongodb文档类似于JSON对象，字段值可以包含其他文档，数组及文档数组
+3、后台项目
+4、vue vue2.0 =》vue-cli2.0  vue-cli3.0
+5、项目 3项目
+6、react    项目
+7、微信小程序   项目
+
+
+
+node.js ：
+    创始人：Ryan Dahl 
+    底层：是C++
+    语言：编译型语言；解释性语言
+    V8引擎满足高性能web服务器
+    诞生：09年5月，node诞生
+    优势：处理更高的性能、追求更高的开发、花最小的硬件成本
+    定义：它跳过了Apache、Nginx、IIs(asp)等HTTP服务器，它自己不用建设在任何服务器上
+        不是一种独立的语言、使用JavaScript进行编程，运行在javascript引擎上（V8）
+    特点：单线程、非阻塞I/O、事件驱动
+            理解线程跟进程：进程>线程 ，进程是资源分配的最小单位，线程是程序执行的最小单位
+    总结：
+    应用：用户表单手机、考试系统、聊天室、图文直播、提供JSON的API、deno
+
+
+
+html：超文本标记语言
+css：层叠样式表
+js：解释性脚本语言
+jq：大型js函数库
+node.js: 让javaScript运行在服务器端的开发平台。
+
+
+node:
+    node -v:查看版本号
+    favicon.icon
+
+    引入http模块
+    var http=require("http")
+    引入fs模块
+    var fs=require("fs")
+    创建服务器
+    http.createServer((res,req)=>{
+        res:响应    req:请求
+        if(req.url=="/red"){
+            fs.readFile("./01.html",(err,data)=>{
+                res.end(data)
+            })
+        }
+    }).listen(8888)
+    listen:监听端口
+
+
+
+AMD和CMD的区别
+相同点：都是为了 JavaScript 的模块化开发，都能达成浏览器端模块化开发的目的。
+不同点：AMD（异步执行） 是 RequireJS 在推广过程中对模块定义的规范化产出。
+        CMD （异步执行）是 SeaJS 在推广过程中对模块定义的规范化产出。
+        AMD和CMD是基于浏览器使用并且是异步执行,commonJS是基于服务端同步执行
+    AMD是提前执行，CMD时延迟执行
+    CMD推崇依赖就近,AMD推崇依赖前置 
+    
+---------------------------------------------------------------------
+import和require的区别
+相同点：node编程中最重要的思想就是模块化，import和require都是被模块化所使用。
+不同点：require是运行时调用，所以require理论上可以运用在代码的任何地方
+        import是编译时调用，所以必须放在文件开头
+        
+
+本质
+require是赋值过程，其实require的结果就是对象、数字、字符串、函数等，再把require的结果赋值给某个变量
+import是解构过程，但是目前所有的引擎都还没有实现import，我们在node中使用babel支持ES6，也仅仅是将ES6转码为ES5再执行，
+import语法会被转码为require,require / exports ：
+遵循 CommonJS/AMD，只能在运行时确定模块的依赖关系及输入/输出的变量，无法进行静态优化。

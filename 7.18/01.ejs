@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <% for(var i in arr){%>
+            <%arr[i].forEach(function(index,item){%>
+                <% for(var a in item){%>
+                    <% console.log(item,a) %>
+                    <%if(local.id==a&&local.user=="teacher"){%>
+                        <h2><%=item[a]%>老师的工号是<%=a%></h2>
+                    <%}else if(local.id==a&&local.user=="student"){%>
+                        <h2><%=item[a]%>同学的工号是<%=a%></h2>
+                    <%}%>
+                <% } %>
+            <%})%>
+        <%}%>
+    </div>
+    
+</body>
+</html>

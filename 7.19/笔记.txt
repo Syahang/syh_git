@@ -1,0 +1,74 @@
+express
+定义：基于node封装的上层服务框架
+核心：中间件    路由    提供API
+简单的路由实现
+路径不区分大小写
+app.get("./",callback)
+params  接收动态路由 参数 /:id
+
+
+query   接收get方式传输过来的值 ?username=tom&age=12
+静态资源服务器
+app.use()   使用    中间件  插件
+express.static()  :静态资源
+path.resolve(__dirname,"public") :拼接路径
+app.use(express.static(pub)) :使用静态资源
+app.post 针对JSON和字符串
+    处理JSON数据的请求：app.use(bodyParser.json())
+    处理字符串数据的请求：app.use(bodyParser.urlencoded({extended:false}))
+
+
+res.send()和res.end()区别
+如果服务器端有动态数据传入客户端，必须用res.send()
+
+cookie特点：
+    保存在浏览器本地，只要不过期就会存在
+    容易受到攻击
+    大小不能超过4k
+    cookie携带的信息容易被串改
+cookie-parser
+加密 signed true    crypto md5
+npm i cookir-parser --save
+session
+express-session
+
+mongodb
+koa
+
+D:\jqury\4、框架
+git 分布式管理系统  github  码云
+    1、本地区，暂时区、服务区
+    2、git init 项目初始化
+    3、git status 状态(红的为本地)
+    4、校验身份:(第一次用的时候)
+        git config --global user.name "" 
+        git config --global user.email "" 
+    5、git add . 添加所有文件    git add <file> 添加单个
+    6、git commit -m "注释"     提交 如果没有-m "注释"，会进入vim编辑模式
+    7、git remote add orign http://... 链接远程仓库(仅针对第一次)
+    8、git push -u origin master    第一次所有 origin:远端
+    9、git push 后续提交
+    分支：作用：便于功能的独立开发
+    10、git branch 列出所有分支
+    11、git branch -r 列出远端所有分支
+    12、git branch -a 列出本地和远端的所有分支
+    13、git branch '分支名称'     创建分支但是停留在当前分支
+    14、git checkout '分支名称'   切换分支
+    15、git checkout -b '分支名称'  创建并切换到当前分支
+    16、git --set-upsream origin "分支名称" 提交分支到远端
+        问题：会把master分支上原有的内容同时提交上去
+        解决方案：
+            git checkout '主干名称'
+            git merge '分支名称'  合并到主干(a作为主干，b作为分支，进行合并时需要切换到a主干上，进行合并)
+            git -d '分支名称'  删除本地分支
+            git push origin :'分支名称' 删除远端分支
+
+    17、git clone '地址'    克隆项目
+        git pull  拉取   针对于远端分支和内容
+        git fetch 拉取   针对于远端内容 
+    18、git config --list 检查已有配置信息
+    19、git diff  版本之间的对比
+    20、git tag    打标签
+    21、git stash   暂存内容
+svn 集中式管理系统
+    1、本地区、服务区

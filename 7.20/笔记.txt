@@ -1,0 +1,15 @@
+mongodb 数据库
+数据库分类：
+    关系数据库：orancle、mysql、sqllite、sqlserver  库db 表table
+    非关系数据库：mongodb、nosql
+特点：数据严格
+数据库作用：仓库(存、取)
+面向文档    json
+库db  集合collection
+安装：msi安装包     zip压缩包
+启动mongdb：
+    启动服务端：mongod --dbpath=D:\Google\mongodb
+    启动客户端：mongo
+      --logpath=C:\data\logs\MongoDB.log --install --serviceName "MongoDB"
+
+
